@@ -4,12 +4,17 @@ on: workflow_dispatch
 jobs:
     deploy:
      runs-on: ubuntu-latest
+     
+     environment:
+      name: development
+      url: https://gitapprovalgates-dev.web.app
+      
      steps:
       - uses: actions/checkout@v2
       - name: Install Packages
         run: npm install    
       - name: Build App
-        run: npm run build
+        run: npm run build          
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
