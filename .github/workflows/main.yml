@@ -10,11 +10,9 @@ jobs:
         run: npm install    
       - name: Build App
         run: npm run build
-      - name: deploy
-        run: firebase deploy
-    #  - uses: FirebaseExtended/action-hosting-deploy@v0
-    #    with:
-     #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
-     #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GITAPPROVALGATES }}'
-     #     projectId: gitapprovalgates-dev
-     #     channelId: live
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
