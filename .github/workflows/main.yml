@@ -1,6 +1,13 @@
 name: Deploy to Firebase Hosting on Push
 #'on': push
-on: workflow_dispatch
+#on: workflow_dispatch
+'on': 
+ workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment'
+        required: true
+        default: 'dev'
 jobs:
     deploy:
      runs-on: ubuntu-latest
