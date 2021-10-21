@@ -9,6 +9,9 @@ name: Deploy to Firebase Hosting on Push
         required: true
         default: 'dev'
 jobs:
+my-job:
+  caption:${{ github.event.inputs.environment }}
+
     deploy:
      runs-on: ubuntu-latest
      
