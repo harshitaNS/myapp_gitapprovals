@@ -24,6 +24,5 @@ jobs:
     - id: 'upload-folder'
       uses: 'google-github-actions/upload-cloud-storage@v0'
       with:
-          path: 'myapp_gitapprovals/.github/workflows'
-          parent: false
+          path: 'Jan25'
           destination: 'gitapprovalgates-dev.appspot.com'
