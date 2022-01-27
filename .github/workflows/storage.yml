@@ -26,3 +26,4 @@ jobs:
       with:
           path: 'Jan25'
           destination: 'gitapprovalgates-dev.appspot.com'
+          parent: false
