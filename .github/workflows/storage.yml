@@ -48,7 +48,7 @@ jobs:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.GCP_CRED }}"
           channelId: live
-          projectId: GITApprovalGates-Dev 
+          projectId: gitapprovalgates-dev 
           
 # jobs:
 #   job_id:
