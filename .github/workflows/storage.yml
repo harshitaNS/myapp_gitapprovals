@@ -25,7 +25,7 @@ jobs:
       - name: Upload the build output
         uses: actions/upload-artifact@v2
         with:
-          name: build-output
+          name: build
           path: |
             output/
             .firebaserc
@@ -40,7 +40,7 @@ jobs:
       - name: Download the build output
         uses: actions/download-artifact@v2
         with:
-          name: build-output
+          name: build
           
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
