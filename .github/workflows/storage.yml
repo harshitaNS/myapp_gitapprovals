@@ -22,15 +22,11 @@ jobs:
       - name: Build App
         run: npm run build 
         
-      - name: Upload the build output
-        uses: actions/upload-artifact@v2
+      - name: Upload Artifact
+        uses: actions/upload-artifact@master
         with:
           name: build
-          path: |
-            output/
-            .firebaserc
-            firebase.json
-          retention-days: 1
+          path: build
           
   deploy:
     name: Deploy
@@ -42,13 +38,18 @@ jobs:
         with:
           name: build
           
-      - name: Deploy to Firebase
-        uses: FirebaseExtended/action-hosting-deploy@v0
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
         with:
-          repoToken: "${{ secrets.GITHUB_TOKEN }}"
-          firebaseServiceAccount: "${{ secrets.GCP_CRED }}"
-          channelId: live
-          projectId: gitapprovalgates-dev 
+           credentials_json: '${{ secrets.GCP_CRED }}'
+  
+      - id: 'upload-folder'
+        uses: 'google-github-actions/upload-cloud-storage@v0'
+        with:
+#           path: './build'
+          destination: 'gitapprovalgates-dev.appspot.com'
+          parent: false    
+      
           
 # jobs:
 #   job_id:
