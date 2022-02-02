@@ -43,11 +43,14 @@ jobs:
         with:
            credentials_json: '${{ secrets.GCP_CRED }}'
   
-      - id: 'upload-folder'
-        uses: 'google-github-actions/upload-cloud-storage@v0'
-        with:
-          path: '.'
-          destination: 'gitapprovalgates-dev.appspot.com'   
+      - name: Delete files from bucket
+        run: gsutil rm gs://gitapprovalgates-dev.appspot.com/**
+
+#       - id: 'upload-folder'
+#         uses: 'google-github-actions/upload-cloud-storage@v0'
+#         with:
+#           path: '.'
+#           destination: 'gitapprovalgates-dev.appspot.com'   
       
           
 # jobs:
